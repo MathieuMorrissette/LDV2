@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"> 
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="./js/jquery.foggy.min.js"></script>
+		<script type="text/javascript" src="http://rvera.github.io/image-picker/image-picker/image-picker.min.js"></script>
+		<script type="text/javascript" src="http://desandro.github.io/imagesloaded/imagesloaded.pkgd.min.js"></script>
+		<script type="text/javascript" src="http://masonry.desandro.com/masonry.pkgd.min.js"></script>
+		<script type="text/javascript" src="js/JavaFonctions.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="css/image-picker.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link rel="stylesheet" type="text/css" href="css/popup.css">
+		
+		<link rel="icon" href="favicon.ico" type="image/gif" size="16x16"> <!-- l'icône au top du navigateur -->
+		<title>Legend of Dragoth</title>
+		
+		<script>
+    		$(document).ready(function(){   
+    			$("#frmConnection").submit(
+    				function(event){
+    					event.preventDefault();	//Empêcher le rafraîchissement
+    					$.ajax({
+    						type: "POST",
+    						url: "/gestion_utilisateur/connection",
+    						data: $("#frmConnection").serialize(),
+    						dataType: "json",
+    						success:function(data, status){
+    							if(data.Resultat)
+							{
+    							//On redirige sur la page d'accueil
+    								window.location = "index.php";
+
+    							}
+							else
+							{
+    								$(".PopupMessage").empty();
+    								$.each(data, function(i, obj) {
+    									if(i != "Resultat"){
+    										$(".PopupMessage").append(obj.toString());
+    									}
+    								});
+    								
+    								$(".PopupLogin").show(); 
+    								$(".PopupBackground").css("display","block");
+    							}
+    						}
+    					});
+    				}
+    			);
+			
+    			$(".BTOkPopup").click(function(){
+    			$(".PopupLogin").hide();
+    			$(".PopupBackground").hide();
+    		    });
+		    });
+        </script>
+	</head>
+	<body>
+		<div class="PopupBackground" style="display:none;"></div>
+		<div class="PopupLogin" style="display:none;">
+			<div class="PopupMessage">
+			</div>
+			<div class="BTOkPopup">
+				ok
+			</div>
+	
+		</div>
+
+		<div id="main">
+			<div class="logo">
+				<img class="IMGLogo" width="600" src="images/logo/logoHalf2.png">
+			</div>
+			<div class="menu-top">
+				<?php echo $this->render("vue/menu_navigation.html");?>				
+			</div>
+			<div class="menu-gauche">
+				<?php echo $this->render("vue/menu_principal.html");?>	
+				<?php echo $this->render("vue/menu_profil.html");?>	 
+			</div>
+			<div class="contenu">
