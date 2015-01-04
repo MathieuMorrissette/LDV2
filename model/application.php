@@ -5,6 +5,7 @@ class application{
         	session_start();
         
 		include('vue/vue.php');
+        include("model/bd.php");
 		
 		//Parse URL
 		$chemin = parse_url($_SERVER["REQUEST_URI"])["path"];

@@ -32,9 +32,9 @@
 			<div class="logo">
 				<img class="IMGLogo" width="600" src="images/logo/logoHalf2.png">
 			</div>
-			<div class="menu-top">
-				<?php echo $this->render("vue/menu_navigation.html");?>				
-			</div>
+			
+            <?php if(!isset($_SESSION["Utilisateur"])){ echo $this->render("vue/menu_navigation.html"); }?>				
+		
 			<div class="menu-gauche">
 				<?php echo $this->render("vue/menu_principal.html");?>	
                 

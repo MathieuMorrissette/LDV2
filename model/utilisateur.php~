@@ -1,10 +1,10 @@
 <?php
 
 class utilisateur{
-    private $m_ID; //Le ID de l'utilisateur.
+    $m_ID; //Le ID de l'utilisateur.
 
-    function __construct($_ID){
-    	$this->m_ID = $_ID;
+function __construct($_ID){
+        $this->m_ID = $_ID;
     }
 
     public static function connection($_Courriel, $_MDP)

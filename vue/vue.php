@@ -17,17 +17,16 @@ class vue{
             return false;
         }
     }
-    public function render($chemin, $donnee)
+    public function render($chemin, $donnee = null)
     {
-	if(isset($donnee))
-	{
-		$this->m_donnee = array_merge($this->m_donnee, $donnee);
-	}
+        if(isset($donnee))
+        {
+            $this->m_donnee = array_merge($this->m_donnee, $donnee);
+        }
 
         if(file_exists($chemin)) {
             include($chemin);  
         }
-          
     }
 }
 ?>

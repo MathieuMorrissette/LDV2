@@ -6,7 +6,7 @@ class bd
 	private static $m_BD; //L'instance de la connection de la base de données.
 	
 	//Méthode pour le singleton.
-	public static function obtenir_bd()
+	public static function ObtenirBD()
 	{
 		if (!isset(static::$m_BD)) {
 			static::$m_BD = new PDO("mysql:host=localhost;dbname=ldv2", "root", "");
@@ -15,7 +15,12 @@ class bd
 	}
 
 	//Empêcher l'instanciation de la classe.
-	private function __construct(){}
+	private function __construct()
+	{
+
+	}
+	
+	
 }
 
 ?>

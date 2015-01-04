@@ -16,46 +16,6 @@
 		<link rel="icon" href="favicon.ico" type="image/gif" size="16x16"> <!-- l'icône au top du navigateur -->
 		<title>Legend of Dragoth</title>
 		
-		<script>
-    		$(document).ready(function(){   
-    			$("#frmConnection").submit(
-    				function(event){
-    					event.preventDefault();	//Empêcher le rafraîchissement
-    					$.ajax({
-    						type: "POST",
-    						url: "/gestion_utilisateur/connection",
-    						data: $("#frmConnection").serialize(),
-    						dataType: "json",
-    						success:function(data, status){
-    							if(data.Resultat)
-							{
-    							//On redirige sur la page d'accueil
-    								window.location = "index.php";
-
-    							}
-							else
-							{
-    								$(".PopupMessage").empty();
-    								$.each(data, function(i, obj) {
-    									if(i != "Resultat"){
-    										$(".PopupMessage").append(obj.toString());
-    									}
-    								});
-    								
-    								$(".PopupLogin").show(); 
-    								$(".PopupBackground").css("display","block");
-    							}
-    						}
-    					});
-    				}
-    			);
-			
-    			$(".BTOkPopup").click(function(){
-    			    $(".PopupLogin").hide();
-    			    $(".PopupBackground").hide();
-    		        });
-});
-        </script>
 	</head>
 	<body>
 		<div class="PopupBackground" style="display:none;"></div>
@@ -73,7 +33,7 @@
 				<img class="IMGLogo" width="600" src="images/logo/logoHalf2.png">
 			</div>
 			<div class="menu-top">
-				<?php echo $this->render("vue/menu_navigation.html");?>				
+				<?php// echo $this->render("vue/menu_navigation.html");?>				
 			</div>
 			<div class="menu-gauche">
 				<?php echo $this->render("vue/menu_principal.html");?>	
