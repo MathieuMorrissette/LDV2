@@ -1,8 +1,0 @@
-<?php
-
-include('model/application.php');
-phpinfo();
-//Démarrer l'application.
-$App = new application();
-
-?>
